@@ -1,10 +1,15 @@
+var cfenv = require('cfenv');
+var appEnv = cfenv.getAppEnv();
+
 var express = require('express');
 var app = require('express')();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-server.listen('3000');
+server.listen(appEnv.port);
+console.log(appEnv.port);
 app.use(express.static('public'));
+
 
 lonelyClient = {};
 allClients = {};
